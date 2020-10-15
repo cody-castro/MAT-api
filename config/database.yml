@@ -21,9 +21,13 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+
+
 development:
   <<: *default
   database: MAT_api_development
+  username: codyuser
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -82,4 +86,4 @@ production:
   <<: *default
   database: MAT_api_production
   username: MAT_api
-  password: <%= ENV['MAT_API_DATABASE_PASSWORD'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
