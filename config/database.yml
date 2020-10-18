@@ -3,7 +3,7 @@
 # Install the pg driver:
 #   gem install pg
 # On macOS with Homebrew:
-#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
+  # gem install pg -- --with-pg-config=/usr/local/bin/pg_config
 # On macOS with MacPorts:
 #   gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
 # On Windows:
@@ -15,19 +15,24 @@
 # gem 'pg'
 #
 default: &default
-  adapter: postgresql
+  adapter: postgis
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  schema_search_path: public, postgis
 
 
 
 development:
   <<: *default
-  database: MAT_api_development
-  username: codyuser
+  adapter: postgis
+  database: postgres
+  port: 5432
+  host: localhost
+  username: <%= ENV['POSTGRES_USERNAME'] %>
   password: <%= ENV['POSTGRES_PASSWORD'] %>
+
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -84,6 +89,6 @@ test:
 #
 production:
   <<: *default
-  database: MAT_api_production
-  username: MAT_api
+  database: postgres
+  username: codyuser
   password: <%= ENV['POSTGRES_PASSWORD'] %>

@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2020_10_16_181201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
@@ -22,8 +23,8 @@ ActiveRecord::Schema.define(version: 2020_10_16_181201) do
     t.string "ada_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.float "long"
-    t.float "lat"
+    t.point "coordinates"
+    t.string "line"
   end
 
   create_table "ratings", force: :cascade do |t|
