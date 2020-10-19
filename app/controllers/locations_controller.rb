@@ -3,7 +3,7 @@ class LocationsController < ApplicationController
 
     def index
         @locations = Location.all
-        render geojson: @locations
+        render json: @locations
     end
     
     # def new
@@ -24,7 +24,7 @@ class LocationsController < ApplicationController
     
     def show
         @location = Location.find(params[:id])
-        render geojson: @location
+        render json: @location
     end
     
     # def destroy
