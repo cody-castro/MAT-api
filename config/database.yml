@@ -27,7 +27,7 @@ default: &default
 development:
   <<: *default
   adapter: postgis
-  database: postgres
+  database: codycastro
   port: 5432
   host: localhost
   username: <%= ENV['POSTGRES_USERNAME'] %>

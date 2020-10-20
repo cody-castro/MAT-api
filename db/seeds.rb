@@ -25,7 +25,7 @@ end
 puts "new users rising from the grave"
 
 10.times do 
-    Rating.create(user_id: rand(1..10), location_id: rand(1..10), rating: rand(1..5) , review: Faker::Company.bs)
+    Rating.create(user_id: rand(1..10), location_id: rand(1..1900), rating: rand(1..5) , review: Faker::Company.bs)
 end
 
 puts "Ratings are at an all time high"

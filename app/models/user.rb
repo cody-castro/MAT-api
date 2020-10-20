@@ -1,4 +1,4 @@
 class User < ApplicationRecord
-    has_many :reviews
-    has_many :locations, through: :reviews
+    has_many :ratings
+    has_many :locations, through: :ratings
 end

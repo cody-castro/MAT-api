@@ -1,5 +1,6 @@
 class RatingsController < ApplicationController
-   
+
+
 def index
     @ratings = Rating.all
     render json: @ratings
@@ -10,7 +11,9 @@ end
 # end
 
 def create
-    @rating = Rating.create(rating_params)
+    # binding.pry
+    # @rating = Rating.create(params[user_id])
+   @rating = Rating.create!(user_id: params["user_id"], location_id: params["location_id"], rating: params["rating"] , review: params["review"])
     render json: @rating
 end
 
@@ -38,3 +41,5 @@ def rating_params
 end
 
 end
+
+
